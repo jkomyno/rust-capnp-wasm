@@ -71,3 +71,18 @@ which should yield
   "year": 2023
 }
 ```
+
+## 👤 Author
+
+**Alberto Schiabel**
+
+* Twitter: [@jkomyno](https://twitter.com/jkomyno)
+* Github: [@jkomyno](https://github.com/jkomyno)
+
+Please consider supporting my work by following me on Twitter and starring my projects on GitHub.
+I mostly post about TypeScript, Rust, and WebAssembly. Thanks!
+
+## 📝 License
+
+Built with ❤️ by [Alberto Schiabel](https://github.com/jkomyno).
+This project is [MIT](https://github.com/jkomyno/rust-capnp-wasm/blob/main/LICENSE) licensed.

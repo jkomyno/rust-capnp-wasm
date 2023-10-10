@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "strict": true
+  },
+  "bench": {
+    "include": ["benches/"]
+  },
+  "lint": {
+    "include": ["src/"],
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo"],
+      "exclude": ["no-unused-vars"]
+    }
+  },
+  "fmt": {
+    "useTabs": true,
+    "lineWidth": 80,
+    "indentWidth": 4,
+    "semiColons": false,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "include": ["src/"]
+  },
+  "lock": false,
+  "nodeModulesDir": false,
+  "test": {
+    "include": ["src/"]
+  },
+  "tasks": {
+    "build": "./build.sh",
+    "event": "deno run --allow-read --allow-env --allow-write ./src/event.ts"
+  },
+  "imports": {
+    "@jkomyno/capnp-ts": "npm:@jkomyno/capnp-ts@1.0.0-alpha.3",
+    "http/": "https://deno.land/std@0.195.0/http/",
+    "superjson": "npm:superjson@1.13.1"
+  },
+  "exclude": [
+    ".git",
+    ".vscode",
+    "rust",
+    ".editorconfig",
+    ".envrc",
+    ".gitignore",
+    ".prettierrc",
+    "README.md"
+  ]
+}

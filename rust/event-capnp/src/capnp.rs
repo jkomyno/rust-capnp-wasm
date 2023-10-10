@@ -21,8 +21,8 @@ pub fn create_event(event: Event) -> capnp::Result<Vec<u8>> {
     Ok(data)
 }
 
-pub fn read_event(data: &[u8]) -> capnp::Result<Event> {
-    let mut data_slice: &[u8] = data.as_ref();
+pub fn read_event(event: &[u8]) -> capnp::Result<Event> {
+    let mut data_slice: &[u8] = event.as_ref();
     let message =
         capnp::serialize::read_message_from_flat_slice(&mut data_slice, Default::default())?;
 
@@ -36,8 +36,8 @@ pub fn read_event(data: &[u8]) -> capnp::Result<Event> {
     Ok(event)
 }
 
-pub fn modify_event(data: &mut [u8]) -> capnp::Result<()> {
-    let mut data_slice: &[u8] = data.as_ref();
+pub fn modify_event(event: &mut [u8]) -> capnp::Result<()> {
+    let mut data_slice: &[u8] = event.as_ref();
     let message =
         capnp::serialize::read_message_from_flat_slice(&mut data_slice, Default::default())?;
 
@@ -49,7 +49,7 @@ pub fn modify_event(data: &mut [u8]) -> capnp::Result<()> {
     let mut root = builder.get_root::<event_capnp::event::Builder>()?;
     root.set_year(2024); // or any other edit
 
-    let mut cursor = std::io::Cursor::new(data);
+    let mut cursor = std::io::Cursor::new(event);
     let mut cursor = cursor.get_mut();
     capnp::serialize::write_message(&mut cursor, &builder)
 }

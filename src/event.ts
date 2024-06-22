@@ -4,12 +4,13 @@ import * as capnp from '@jkomyno/capnp-ts'
 import { Event as EventRoot } from './capnp/event.capnp.js'
 
 // @deno-types='./wasm/event_capnp.d.ts'
-import { modifyEvent, readEvent, type Event } from './wasm/event_capnp.js'
+import { createEvent, modifyEvent, readEvent, type Event } from './wasm/event_capnp.js'
 import { xxd } from './utils/xxd.ts'
 import { computeSHA } from './utils/sha.ts'
 
-function createEvent(event: Event): Uint8Array {
-  const message = new capnp.Message()
+function createEventFromJS(event: Event): Uint8Array {
+  // - use unpacked capnp
+  const message = new capnp.Message(undefined, false)
   const root = message.initRoot(EventRoot)
 
   root.setName(event.name)
@@ -19,6 +20,20 @@ function createEvent(event: Event): Uint8Array {
   return new Uint8Array(arrayBuffer)
 }
 
+function readEventFromJS(eventAsBinary: Uint8Array) {
+  // - use unpacked capnp
+  const message = new capnp.Message(eventAsBinary.slice(), false)
+
+  const root = message.getRoot(EventRoot)
+
+  return {
+    name: root.getName(),
+    year: root.getYear(),
+  }
+}
+
+// DEMO: try replacing `*EventFromJS` with the `*Event` counterparts (coming from Rust + Wasm)
+// and see what happens
 async function main() {
   const eventJS = {
     name: 'rustfest',
@@ -27,11 +42,11 @@ async function main() {
 
   console.log('eventJS', eventJS, '\n')
 
-  const eventAsBinary = createEvent(eventJS)
+  const eventAsBinary = createEventFromJS(eventJS)
   console.log('eventAsBinary')
   console.log(xxd(eventAsBinary), '\n')
 
-  const eventAsPlainJS = readEvent(eventAsBinary)
+  const eventAsPlainJS = readEventFromJS(eventAsBinary)
   console.log('eventAsPlainJS', eventAsPlainJS, '\n')
 
   const modifiedEventAsBinary = eventAsBinary.slice()

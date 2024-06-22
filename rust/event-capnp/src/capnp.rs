@@ -60,7 +60,6 @@ pub fn modify_event(event: &mut [u8]) -> capnp::Result<()> {
 
     let mut root = builder.get_root::<event_capnp::event::Builder>()?;
     root.set_year(2025); // or any other edit
-    root.set_name("rust");
 
     let mut cursor = std::io::Cursor::new(event);
     let mut cursor = cursor.get_mut();

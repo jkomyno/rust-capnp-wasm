@@ -2,7 +2,9 @@
 
 ---
 
-Slides for this talk are also available [here](https://jkomyno-trivago-rust-meetup-2023.vercel.app/).
+This talk was presented at:
+- [Trivago Rust Guild Meetup #3](https://www.meetup.com/trivago-tech-data-product/events/295240004) on 2023-10-10 (see [Slides](https://jkomyno-trivago-rust-meetup-2023.vercel.app))
+- [RustFest Zürich 2024](https://rustfest.ch/) on 2024-06-22 (see [Slides](https://jkomyno-rustfest-zurich-2024.vercel.app))
 
 ## Abstract
 
@@ -10,8 +12,8 @@ JSON is the de facto standard for sharing data between services, but its neither
 
 ### Requirements
 
-- [Rust 1.73.0](https://www.rust-lang.org/tools/install) or superior*
-- [Deno 1.36.0](https://docs.deno.com/runtime/manual/getting_started/installation) or superior*
+- [Rust 1.77.0](https://www.rust-lang.org/tools/install) or superior*
+- [Deno 1.44.0](https://docs.deno.com/runtime/manual/getting_started/installation) or superior*
 
 (*) These are the versions used to develop this repository. Older versions might work as well, but they haven't been tested.
 
@@ -67,8 +69,8 @@ which should yield
 
 ```json
 {
-  "name": "trivago",
-  "year": 2023
+  "name": "rustfest",
+  "year": 2024
 }
 ```
 

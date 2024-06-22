@@ -4,7 +4,7 @@ import * as capnp from '@jkomyno/capnp-ts'
 import { Event as EventRoot } from './capnp/event.capnp.js'
 
 // @deno-types='./wasm/event_capnp.d.ts'
-import { /* createEvent, */ modifyEvent, readEvent, type Event } from './wasm/event_capnp.js'
+import { modifyEvent, readEvent, type Event } from './wasm/event_capnp.js'
 import { xxd } from './utils/xxd.ts'
 import { computeSHA } from './utils/sha.ts'
 
@@ -21,8 +21,8 @@ function createEvent(event: Event): Uint8Array {
 
 async function main() {
   const eventJS = {
-    name: 'trivago',
-    year: 2023,
+    name: 'rustfest',
+    year: 2024,
   }
 
   console.log('eventJS', eventJS, '\n')
@@ -41,12 +41,6 @@ async function main() {
 
   const modifiedEventAsPlainJS = readEvent(modifiedEventAsBinary)
   console.log('modifiedEventAsPlainJS', modifiedEventAsPlainJS, '\n')
-
-  // {
-  //   const array = new Uint8Array([0xe8, 0x07])
-  //   const data = new DataView(array.buffer)
-  //   console.log(data.getUint16(0, true))
-  // }
 
   const eventBinaryPath = './bin/event.bin'
 

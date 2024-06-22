@@ -21,7 +21,7 @@ Furthermore, you'll need to install:
 
 - `wasm-bindgen`, via:
   ```sh
-  cargo install -f wasm-bindgen-cli@0.2.87
+  cargo install -f wasm-bindgen-cli@0.2.92
   ```
 - `capnp`, via:
   ```sh
